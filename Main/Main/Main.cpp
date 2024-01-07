@@ -40,4 +40,16 @@ int main() {
     if (sizeof(you.balance) == 1)
         cout << "Your balance is wrong"; // need to be fixed
 
+    cout << endl << "Hi " << you.firstName << " " << you.lastName << "," << endl << "Do you want to inherit a property" << endl;;
+    cin >> answer;
+    if (answer == "Yes")
+    {
+        cout << "Please enter the address of the property: ";
+        cin >> you.house.address;
+    }
+    else
+    {
+        cout << "Okay.";
+    }
+
 }
