@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Main",
+    "\\Main\\Main"
   ],
-  "SelectedNode": "\\C:\\Users\\Miro\\Source\\Repos\\M3B",
+  "SelectedNode": "\\Main\\Main\\Main.cpp",
   "PreviewInSolutionExplorer": false
 }
