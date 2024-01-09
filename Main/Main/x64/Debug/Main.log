@@ -1,5 +1,3 @@
-﻿  Main.cpp
-  Register.cpp
-C:\Users\Admin\Desktop\M3B\M3B\Main\Main\Register.cpp(19,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-  Main.vcxproj -> C:\Users\Admin\Desktop\M3B\M3B\Main\x64\Debug\Main.exe
+﻿  Register.cpp
+C:\Users\MIDimova21\source\repos\M3B\Main\Main\Register.cpp(29,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Main.vcxproj -> C:\Users\MIDimova21\source\repos\M3B\Main\x64\Debug\Main.exe

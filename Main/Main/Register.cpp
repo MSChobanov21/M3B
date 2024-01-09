@@ -2,16 +2,33 @@
 
 void reg()
 {
-	string newName, newPass, confirmPass;
+    string newPass, confirmPass;
     int MiniPass;
 
     cout << endl << "**** Create New Account ****" << endl;
 
     cout << endl << "Enter New UserName: ";
-    cin >> newName;
+
+    ofstream out("names.txt", std::ios_base::app);
+    if (out.is_open())
+    {
+        string name;
+        cin >> name;
+        out << name << endl;
+        out.close();
+    }
+
 
     cout << endl << "Enter New password: ";
-    cin >> newPass; // make it cin * instead of the password
+    // make it cin * instead of the password
+    ofstream out("passwords.txt", std::ios_base::app);
+    if (out.is_open())
+    {
+        string name;
+        cin >> name;
+        out << name << endl;
+        out.close();
+    }
 
     cout << endl << "Confirm the password: ";
     cin >> confirmPass;
@@ -33,5 +50,11 @@ void reg()
         cout << endl << "Password confirmation not correct!" << endl;
 
     }
+    
+}
+
+void login()
+{
+
 }
 

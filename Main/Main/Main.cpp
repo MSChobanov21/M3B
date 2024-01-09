@@ -40,6 +40,16 @@ int main()
     }
     else if (answer == "login")
     {
+        
+    }
+}
+
+
+
+
+/*
+
+
         cout << "Enter you first name: ";
         cin >> you.firstName;
         cout << endl << "Enter you last name: ";
@@ -62,5 +72,8 @@ int main()
         {
             cout << "Okay.";
         }
-    }
-}
+
+
+*/
+
+
