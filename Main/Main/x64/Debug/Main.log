@@ -1,2 +1,6 @@
 ﻿  Main.cpp
-  Main.vcxproj -> C:\Users\User\source\repos\M3B\Main\x64\Debug\Main.exe
+  Register.cpp
+C:\Users\MIDimova21\source\repos\M3B\Main\Main\Register.cpp(12,9): warning C4101: 'MiniPass': unreferenced local variable
+C:\Users\MIDimova21\source\repos\M3B\Main\Main\Register.cpp(67,9): warning C4101: 'MiniPass': unreferenced local variable
+  Generating Code...
+  Main.vcxproj -> C:\Users\MIDimova21\source\repos\M3B\Main\x64\Debug\Main.exe

@@ -5,4 +5,7 @@
 #include <vector>
 using namespace std;
 
+struct Account;
+
 void reg();
+void login();

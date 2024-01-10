@@ -42,6 +42,10 @@ int main()
     }
     else if (answer == "login")
     {
+        login();
+    }
+
+
         srand(static_cast<unsigned int>(time(0)));
         int balance = rand() % 499000 + 1000;
         int liab = rand() % 9 + 1;
@@ -70,7 +74,7 @@ int main()
         case 8: cout << house1 << endl << house8 << endl << house4; break;
         case 9: cout << house9; break;
         };
-    }
+
 }
 
 
