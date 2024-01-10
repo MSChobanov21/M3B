@@ -91,7 +91,23 @@ int main()
         cin >> choose;
         if (choose == 1)
         {
-
+            cout << "Who do you want to transfer money to?" << endl;
+            cout << "Enter username: ";
+            string uName;
+            cin >> uName;
+            cout << "What amount of money do you wish to transfer to " << uName << "?" << endl;
+            int transferSum;
+            cin >> transferSum;
+            if (transferSum <= balance)
+            {
+                cout << "Transfer was successful!" << endl;
+                balance -= transferSum;
+                cout << "Your updated balance is: " << balance << endl;
+            }
+            else
+            {
+                cout << "Transfer cancelled, please try again!" << endl;
+            }
         }
         else if (choose == 2)
         {
