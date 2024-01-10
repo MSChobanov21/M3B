@@ -21,13 +21,13 @@ void reg()
 
     cout << endl << "Enter New password: ";
     // make it cin * instead of the password
-    ofstream out("passwords.txt", std::ios_base::app);
-    if (out.is_open())
+    ofstream out1("passwords.txt", std::ios_base::app);
+    if (out1.is_open())
     {
         string name;
         cin >> name;
-        out << name << endl;
-        out.close();
+        out1 << name << endl;
+        out1.close();
     }
 
     cout << endl << "Confirm the password: ";
