@@ -1,4 +1,5 @@
 #include "Header.h"
+#include "Page.h"
 
 void reg()
 {
@@ -56,6 +57,30 @@ void reg()
     }
 }
 
+bool check(string username, string password, string userFile, string passFile)
+{
+    ifstream file(userFile);
+    ifstream file1(passFile);
+
+    string storedUsername;
+    string storedPassword;
+
+    while (file >> storedUsername && file1 >> storedPassword)
+    {
+        if (storedUsername == username)
+        {
+            file.close();
+            file1.close();
+            return storedPassword == password;
+        }
+    }
+
+    file.close();
+    file1.close();
+}
+
+
+
 void login()
 {
     string userName, Pass;
@@ -66,43 +91,13 @@ void login()
     cout << endl << "Enter Your password: ";
     cin >> Pass;
 
-    ifstream file("names.txt");
-    bool found = false;
-    string line;
-    while (getline(file, line)) 
+    if (check(userName, Pass, "names.txt", "passwords.txt")) 
     {
-        if (line.find(userName) != string::npos) 
-        {
-            found = true;
-            break;
-        }
+        cout << endl << "Login successful!" << endl;
     }
-    file.close();
-
-    ifstream file1("passwords.txt");
-    bool found1 = false;
-    string line1;
-    while (getline(file1, line1))
+    else 
     {
-        if (line1.find(Pass) != string::npos)
-        {
-            found1 = true;
-            break;
-        }
-    }
-    file1.close();
-
-    if (found == true && found1 == true) 
-    {
-        cout << endl << "Successfully login!" << endl;
-    }
-    else if(found == false)
-    {
-        cout << endl << "Wrong username!" << endl;
-    }
-    else if (found1 == false)
-    {
-        cout << endl << "Wrong password!" << endl;
+        cout << endl << "Invalid username or password." << endl;
     }
 
 }

@@ -1,8 +1,7 @@
-#include <iostream>
-#include <string>
 #include "Header.h"
 #include <cstdlib>
 #include <ctime>
+#include "Page.h"
 
 using namespace std;
 
