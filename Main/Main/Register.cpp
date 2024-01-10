@@ -94,6 +94,7 @@ void login()
     if (check(userName, Pass, "names.txt", "passwords.txt")) 
     {
         cout << endl << "Login successful!" << endl;
+        account();
     }
     else 
     {
