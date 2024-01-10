@@ -1,16 +1,9 @@
 #include "Header.h"
 
-struct Account
-{
-    string newPass;
-    string newName;
-};
-
 void reg()
 {
-    string confirmPass;
-    int MiniPass;
-    Account acc;
+    string confirmPass, newPass;
+    //int MiniPass;
 
     cout << endl << "**** Create New Account ****" << endl;
 
@@ -23,7 +16,6 @@ void reg()
         cin >> name;
         out << name << endl;
         out.close();
-        acc.newName = name;
     }
 
     cout << endl << "Enter New password: ";
@@ -35,7 +27,7 @@ void reg()
         cin >> Pass;
         out1 << Pass << endl;
         out1.close();
-        acc.newPass = Pass;
+        newPass = Pass;
     }
 
     cout << endl << "Confirm the password: ";
@@ -47,7 +39,7 @@ void reg()
     {
         cout << endl << "Your password is weak at least 8 letters!" << endl;
     }*/
-    if (confirmPass == acc.newPass) 
+    if (confirmPass == newPass) 
     {
         //Add smth like a check mark
         cout << "\n===================================\n";
@@ -64,8 +56,7 @@ void reg()
 void login()
 {
     string userName, Pass;
-    int MiniPass;
-    Account acc;
+    //int MiniPass;
 
     cout << endl << "Enter Your UserName: ";
     cin >> userName;
@@ -73,27 +64,56 @@ void login()
     cout << endl << "Enter Your password: ";
     cin >> Pass;
 
+    ifstream file("names.txt");
+    bool found = false;
+    string line;
+    while (getline(file, line)) 
+    {
+        if (line.find(userName) != string::npos) 
+        {
+            found = true;
+            break;
+        }
+    }
+    file.close();
+
+    ifstream file1("passwords.txt");
+    bool found1 = false;
+    string line1;
+    while (getline(file1, line1))
+    {
+        if (line1.find(Pass) != string::npos)
+        {
+            found1 = true;
+            break;
+        }
+    }
+    file1.close();
+
+    if (found == true && found1 == true) 
+    {
+        cout << endl << "Successfully login!" << endl;
+    }
+    else if(found == false)
+    {
+        cout << endl << "Wrong username!" << endl;
+    }
+    else if (found1 == false)
+    {
+        cout << endl << "Wrong password!" << endl;
+    }
+
+
+
+
+
+
+
     /*MiniPass = Pass.length();
 
     if (MiniPass < 8)
     {
         cout << endl << "Your password is weak at least 8 letters!" << endl;
     }*/
-    while (Pass == acc.newPass)
-    {
-        cout << endl << "Successfully login!" << endl;
-    }
-
-    while (userName == acc.newName)
-    {
-        cout << endl << "Successfully login!" << endl;
-    }
-
-
-    if (Pass != acc.newPass && userName != acc.newName)
-    {
-        cout << endl << "Your username is wrong!" << endl;
-        cout << endl << "Your password is wrong!" << endl;
-    }
 }
 

@@ -2,10 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
+//#include <vector>
 using namespace std;
 
-struct Account;
 
 void reg();
 void login();
