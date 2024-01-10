@@ -28,6 +28,19 @@ struct person{
     int cars;
 };
 
+void exc(int num)
+{
+    try
+    {
+        num != 1;
+        num != 2;
+        throw num;
+    }
+    catch (int choose1)
+    {
+        cout << "Please enter a number between 1 and 2.";
+    }
+}
 
 int main() 
 {
@@ -70,6 +83,23 @@ int main()
         case 8: cout << house1 << endl << house8 << endl << house4; break;
         case 9: cout << house9; break;
         };
+        cout << endl;
+        cout << "If you wish to bequeath an asset or liability, you can choose from the options bellow." << endl;
+        cout << "1. Asset" << endl;
+        cout << "2. Liability" << endl;
+        int choose;
+        cin >> choose;
+        if (choose == 1)
+        {
+
+        }
+        else if (choose == 2)
+        {
+        }
+        else
+        {
+            exc(choose);
+        }
     }
 }
 
