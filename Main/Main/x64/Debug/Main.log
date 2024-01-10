@@ -1,8 +1,2 @@
-﻿  Main.cpp
-C:\Users\Admin\Desktop\M3B - Will\M3B\Main\Main\Main.cpp(35,13): warning C4552: '!=': result of expression not used
-C:\Users\Admin\Desktop\M3B - Will\M3B\Main\Main\Main.cpp(36,13): warning C4552: '!=': result of expression not used
-C:\Users\Admin\Desktop\M3B - Will\M3B\Main\Main\Main.cpp(39,16): warning C4101: 'choose1': unreferenced local variable
-  Register.cpp
-C:\Users\Admin\Desktop\M3B - Will\M3B\Main\Main\Register.cpp(6,9): warning C4101: 'MiniPass': unreferenced local variable
-  Generating Code...
-  Main.vcxproj -> C:\Users\Admin\Desktop\M3B - Will\M3B\Main\x64\Debug\Main.exe
+﻿  Register.cpp
+  Main.vcxproj -> C:\Users\Admin\Desktop\M3B Will\M3B\Main\x64\Debug\Main.exe

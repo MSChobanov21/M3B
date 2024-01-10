@@ -3,7 +3,7 @@
 void reg()
 {
     string confirmPass, newPass;
-    //int MiniPass;
+    int numLog;
 
     cout << endl << "**** Create New Account ****" << endl;
 
@@ -33,30 +33,32 @@ void reg()
     cout << endl << "Confirm the password: ";
     cin >> confirmPass;
 
-    /*MiniPass = acc.newPass.length();
-
-    if (MiniPass < 8) 
-    {
-        cout << endl << "Your password is weak at least 8 letters!" << endl;
-    }*/
     if (confirmPass == newPass) 
     {
         //Add smth like a check mark
         cout << "\n===================================\n";
         cout << "\nSuccessfully new account created! \n \n";
         cout << "===================================\n";
+        cout << endl;
+        cout << "If you want to login in your account enter '1':" << endl;
     }
     else 
     {
         cout << endl << "Password confirmation not correct!" << endl;
 
     }
+
+    // Add system("cls")
+    cin >> numLog;
+    if (numLog == 1)
+    {
+        login();
+    }
 }
 
 void login()
 {
     string userName, Pass;
-    //int MiniPass;
 
     cout << endl << "Enter Your UserName: ";
     cin >> userName;
@@ -103,17 +105,5 @@ void login()
         cout << endl << "Wrong password!" << endl;
     }
 
-
-
-
-
-
-
-    /*MiniPass = Pass.length();
-
-    if (MiniPass < 8)
-    {
-        cout << endl << "Your password is weak at least 8 letters!" << endl;
-    }*/
 }
 
