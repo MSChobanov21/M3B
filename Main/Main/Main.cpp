@@ -68,7 +68,7 @@ int main()
         house7 = "House in Galabovo, Bulgaria";
         house8 = "Apartment in Plovdiv, Bulgaria";
         house9 = "House in Varna, Bulgaria";
-        cout << "Hello, " << endl << "This is your bank account!";
+        cout << "Hello, " << endl << "This is your bank account!" << endl;
         cout << "This is the value of your assets: " << balance << endl;
         cout << "Those are your liabilities: " << endl;
         switch (liab)
