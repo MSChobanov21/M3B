@@ -71,102 +71,6 @@ void asset(int balance)
 //}
 
 
-/*void balance()
-{
-    string num;
-    char checkMoney;
-    cout << endl << "If you have money in your bank enter 1 to saw it if you want add money enter 2:" << endl;
-    cin >> checkMoney;
-
-
-    if (checkMoney == '2')
-    {
-        cout << endl << "Enter you money:" << endl;
-
-        ofstream out("money.txt", std::ios_base::app);
-        if (out.is_open())
-        {
-            string money;
-            cin >> money;
-            out << money << endl;
-            out.close();
-            cout << "Your balance is:" << money << endl;
-            num = money;
-        }
-    }
-    if (checkMoney == '1')
-    {
-
-        string money = num;
-        ifstream file("money.txt");
-        bool found = false;
-        string line;
-        while (getline(file, line))
-        {
-            if (line.find(money) != string::npos)
-            {
-                found = true;
-
-            }
-        }
-        file.close();
-
-        if (found)
-        {
-            cout << "Your balance is:" << money << endl;
-        }
-        else
-        {
-            cout << "Error";
-        }
-
-    }
-}*/
-
-
-int changeBalance(int data, int newD)
-{
-    // Step 1: Open the file for reading and writing
-    ifstream inFile("balance.txt");
-
-    // Step 2: Read the content of the file
-    string content;
-    string line;
-    while (getline(inFile, line)) 
-    {
-        content += line + '\n';
-    }
-
-    // Step 3: Modify the specific information
-    // For example, let's say you want to replace "old_data" with "new_data"
-    string oldData = to_string(data);
-    string newData = to_string(newD);
-    size_t pos = content.find(oldData);
-    if (pos != string::npos) 
-    {
-        content.replace(pos, oldData.length(), newData);
-    }
-    else 
-    {
-        cerr << "Data not found in the file." << endl;
-        inFile.close();
-        return 1;
-    }
-
-    // Step 4: Write the modified content back to the file
-    ofstream outFile("balance.txt");
-
-    outFile << content;
-
-    // Close the files
-    inFile.close();
-    outFile.close();
-
-    cout << "File updated successfully." << endl;
-
-    return 0;
-}
-/*
 // Function to add money to the account
 void addMoney(double& balance) 
 {
@@ -181,8 +85,9 @@ void addMoney(double& balance)
 }
 
 // Function to save balance to a text file
-void saveBalanceToFile(double balance) {
-    ofstream file("balance.txt");
+void saveBalanceToFile(double balance, string user) 
+{
+    ofstream file(user + ".txt");
 
     if (file.is_open()) {
         file << balance;
@@ -192,25 +97,37 @@ void saveBalanceToFile(double balance) {
     else {
         cout << "Error: Unable to open file for saving balance." << endl;
     }
-}*/
-
+}
 
 void balance()
 {
     double balance = 0.0;
+    string userName;
+    cout << "Enter again you username to check balance:" << endl;
+    cin >> userName;
+    ofstream user(userName + ".txt");
 
-    // Load previous balance from file (if available)
-    ifstream file("balance.txt");
-    if (file.is_open()) {
-        file >> balance;
-        file.close();
-        cout << "Previous balance loaded: " << balance << endl;
+    if (balance == 0.0)
+    {
+        // Load previous balance from file (if available)
+        ifstream file(userName + ".txt");
+        if (file.is_open()) 
+        {
+            file >> balance;
+            file.close();
+            cout << "Previous balance loaded: " << balance << endl;
+        }
+        else 
+        {
+            cout << "No previous balance found. Starting with a balance of 0." << endl;
+        }
     }
-    else {
-        cout << "No previous balance found. Starting with a balance of 0." << endl;
+    else
+    {
+        //da se napravi proverka taka che da izlizat parite che izliza 0
     }
+    
 
-    double newBalance = balance;
 
     // Menu for adding money
     char choice;
@@ -220,29 +137,22 @@ void balance()
         cout << "Enter your choice: ";
         cin >> choice;
 
-        switch (choice) {
+        switch (choice) 
+        {
         case '1':
-            //addMoney(balance);
-
-            double amount;
-            cout << "Enter the amount to add: ";
-            cin >> amount;
-
-            // Update balance
-            
-            newBalance += amount;
-
-            cout << "Money added successfully. New balance: " << newBalance << endl;
-
+            addMoney(balance);
             break;
         case '2':
-            cout << changeBalance(balance, newBalance);
+            saveBalanceToFile(balance, userName);
             break;
         default:
             cout << "Invalid choice. Try again." << endl;
         }
     } while (choice != '2');
 }
+
+
+
 
 void account()
 {
@@ -264,6 +174,8 @@ void account()
     */
     
     //cout << "This is the value of your assets: " << balance << endl;
+    
+    
     balance();
 
     
