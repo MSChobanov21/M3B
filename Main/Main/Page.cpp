@@ -23,20 +23,53 @@ void Asset(int balance)
     cout << "Enter username: ";
     string uName;
     cin >> uName;
-    cout << "What amount of money do you wish to transfer to " << uName << "?" << endl;
-    int transferSum;
-    cin >> transferSum;
-    if (transferSum <= balance)
+
+    ifstream file("names.txt");
+    bool found = false;
+    string line;
+    while (std::getline(file, line)) 
     {
-        cout << "Transfer was successful!" << endl;
-        balance -= transferSum;
-        cout << "Your updated balance is: " << balance << endl;
+        if (line.find(uName) != std::string::npos) 
+        {
+            found = true;
+        }
     }
-    else
+    file.close();
+
+    if (found) 
     {
-        cout << "Transfer cancelled, please try again!" << endl;
+        cout << "What amount of money do you wish to transfer to " << uName << "?" << endl;
+        int transferSum;
+        cin >> transferSum;
+        if (transferSum <= balance)
+        {
+            cout << "Transfer was successful!" << endl;
+            balance -= transferSum;
+            cout << "Your updated balance is: " << balance << endl;
+        }
+        else
+        {
+            cout << "Transfer cancelled, please try again!" << endl;
+        }
+    }
+    else 
+    {
+        cout << "Invalid Username";
     }
 }
+
+
+//void Will()
+//{
+//    if ()
+//    {
+//        cout << "No wills sent" << endl;
+//    }
+//    else
+//    {
+//        cout << "You have a will from:" << 
+//    }
+//}
 
 
 void account()
