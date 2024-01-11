@@ -10,4 +10,5 @@ void account();
 void exc(int num);
 void asset(int balance);
 //void Will();
+int changeBalance();
 void balance();

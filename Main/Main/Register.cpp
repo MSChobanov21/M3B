@@ -80,7 +80,6 @@ bool check(string username, string password, string userFile, string passFile)
 }
 
 
-
 void login()
 {
     string userName, Pass;
@@ -93,7 +92,7 @@ void login()
 
     if (check(userName, Pass, "names.txt", "passwords.txt")) 
     {
-        cout << endl << "Login successful!" << endl;
+        cout << "Hello " << userName << "," << endl << "This is your bank account!" << endl;
         account();
     }
     else 
