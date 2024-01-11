@@ -8,5 +8,6 @@ using namespace std;
 
 void account();
 void exc(int num);
-void Asset(int balance);
-void Will();
+void asset(int balance);
+//void Will();
+void balance();
