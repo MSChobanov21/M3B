@@ -6,13 +6,38 @@ void exc(int num)
     {
         num != 1;
         num != 2;
+        num != 3;
         throw num;
     }
     catch (int choose1)
     {
-        cout << "Please enter a number between 1 and 2.";
+        cout << "Please enter a number between 1,2 and 3.";
     }
 }
+
+
+void Asset(int balance)
+{
+
+    cout << "Who do you want to transfer money to?" << endl;
+    cout << "Enter username: ";
+    string uName;
+    cin >> uName;
+    cout << "What amount of money do you wish to transfer to " << uName << "?" << endl;
+    int transferSum;
+    cin >> transferSum;
+    if (transferSum <= balance)
+    {
+        cout << "Transfer was successful!" << endl;
+        balance -= transferSum;
+        cout << "Your updated balance is: " << balance << endl;
+    }
+    else
+    {
+        cout << "Transfer cancelled, please try again!" << endl;
+    }
+}
+
 
 void account()
 {
@@ -46,46 +71,29 @@ void account()
     case 9: cout << house9; break;
     };
     cout << endl;
-    cout << "If you wish to bequeath an asset or liability, you can choose from the options bellow." << endl;
+    cout << "If you wish to bequeath an asset,liability or will, you can choose from the options bellow." << endl;
     cout << "1. Asset" << endl;
     cout << "2. Liability" << endl;
+    cout << "3. Will" << endl;
     int choose;
     cin >> choose;
     if (choose == 1)
     {
-        cout << "Who do you want to transfer money to?" << endl;
-        cout << "Enter username: ";
-        string uName;
-        cin >> uName;
-        cout << "What amount of money do you wish to transfer to " << uName << "?" << endl;
-        int transferSum;
-        cin >> transferSum;
-        if (transferSum <= balance)
-        {
-            cout << "Transfer was successful!" << endl;
-            balance -= transferSum;
-            cout << "Your updated balance is: " << balance << endl;
-        }
-        else
-        {
-            cout << "Transfer cancelled, please try again!" << endl;
-        }
+        Asset(balance);
     }
     else if (choose == 2)
     {
+
+    }
+    else if (choose == 3)
+    {
+
     }
     else
     {
         exc(choose);
     }
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -113,8 +121,3 @@ void account()
             out.close();
         }
     }*/
-
-
-
-
-}
