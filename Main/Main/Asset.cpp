@@ -23,14 +23,19 @@ void asset(double balance)
 
     if (found)
     {
-        cout << "What amount of money do you wish to transfer to " << uName << "?" << endl;
+        cout << "What amount of money do you want to transfer to " << uName << "?" << endl;
         double transferSum;
         cin >> transferSum;
         if (transferSum <= balance)
         {
             cout << "Transfer was successful!" << endl;
             balance -= transferSum;
+            cout << "If you want to see your balance after transfer enter your username:" << endl;
+            string yourUsername;
+            cin >> yourUsername;
+            saveBalanceToFile(balance, yourUsername);
             cout << "Your updated balance is: " << balance << endl;
+            
         }
         else
         {
