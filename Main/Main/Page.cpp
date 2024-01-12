@@ -16,7 +16,7 @@ void exc(int num)
 }
 
 
-void asset(int balance)
+void asset(double balance)
 {
     cout << "Who do you want to transfer money to?" << endl;
     cout << "Enter username: ";
@@ -38,7 +38,7 @@ void asset(int balance)
     if (found) 
     {
         cout << "What amount of money do you wish to transfer to " << uName << "?" << endl;
-        int transferSum;
+        double transferSum;
         cin >> transferSum;
         if (transferSum <= balance)
         {
@@ -89,45 +89,35 @@ void saveBalanceToFile(double balance, string user)
 {
     ofstream file(user + ".txt");
 
-    if (file.is_open()) {
+    if (file.is_open()) 
+    {
         file << balance;
         file.close();
         cout << "Balance saved to file." << endl;
     }
-    else {
+    else 
+    {
         cout << "Error: Unable to open file for saving balance." << endl;
     }
 }
 
-void balance()
+
+
+double balanceFunc()
 {
     double balance = 0.0;
     string userName;
     cout << "Enter again you username to check balance:" << endl;
     cin >> userName;
-    ofstream user(userName + ".txt");
 
-    if (balance == 0.0)
+    // Load previous balance from file (if available)
+    ifstream file(userName + ".txt");
+    if (file.is_open()) 
     {
-        // Load previous balance from file (if available)
-        ifstream file(userName + ".txt");
-        if (file.is_open()) 
-        {
-            file >> balance;
-            file.close();
-            cout << "Previous balance loaded: " << balance << endl;
-        }
-        else 
-        {
-            cout << "No previous balance found. Starting with a balance of 0." << endl;
-        }
+        file >> balance;
+        file.close();
+        cout << "Previous balance loaded: " << balance << endl;
     }
-    else
-    {
-        //da se napravi proverka taka che da izlizat parite che izliza 0
-    }
-    
-
 
     // Menu for adding money
     char choice;
@@ -149,7 +139,11 @@ void balance()
             cout << "Invalid choice. Try again." << endl;
         }
     } while (choice != '2');
+
+    return balance;
+
 }
+
 
 
 
@@ -172,13 +166,8 @@ void account()
     house8 = "Apartment in Plovdiv, Bulgaria";
     house9 = "House in Varna, Bulgaria";
     */
-    
     //cout << "This is the value of your assets: " << balance << endl;
-    
-    
-    balance();
-
-    
+    double currentBalance = balanceFunc();
 
 
 
@@ -206,11 +195,13 @@ void account()
     cout << "3. Will" << endl;
 
 
+
+
     int choose;
     cin >> choose;
     if (choose == 1)
     {
-        //asset(); - trqbva balans
+        asset(currentBalance);
     }
     else if (choose == 2)
     {

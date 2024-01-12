@@ -9,8 +9,8 @@ using namespace std;
 
 void account();
 void exc(int num);
-void asset(int balance);
+void asset(double balance);
 //void Will();
-void balance();
+double balanceFunc();
 void saveBalanceToFile(double balance, string user);
 void addMoney(double& balance);
