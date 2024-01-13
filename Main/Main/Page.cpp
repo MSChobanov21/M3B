@@ -1,6 +1,11 @@
 #include "Page.h"
 #include "Asset.h"
 
+string Name;
+double transfer;
+double balances;
+string Username;
+
 void exc(int num)
 {
     try
@@ -90,7 +95,119 @@ double balanceFunc()
 }
 
 
+double sum(string userName)
+{
+    double balance = 0.0;
+    ifstream file(userName + ".txt");
+    if (file.is_open())
+    {
+        file >> balance;
+        file.close();
+        return balance;
+    }
+}
 
+void send(string user, double balance, double transferSum)
+{
+    ofstream file(user + ".txt");
+
+    if (file.is_open())
+    {
+        balance = balance + transferSum;
+        file << balance;
+        file.close();
+        cout << "Balance saved to file." << endl;
+    }
+    else
+    {
+        cout << "Error: Unable to open file for saving balance." << endl;
+    }
+}
+
+
+void asset(double balance)
+{
+    cout << "Who do you want to transfer money to?" << endl;
+    cout << "Enter username: ";
+    string uName;
+    cin >> uName;
+
+    ifstream file("names.txt");
+    bool found = false;
+    string line;
+    while (getline(file, line))
+    {
+        if (line.find(uName) != string::npos)
+        {
+            found = true;
+        }
+    }
+    file.close();
+
+    if (found)
+    {
+        cout << "What amount of money do you want to transfer to " << uName << "?" << endl;
+        double transferSum;
+        cin >> transferSum;
+        if (transferSum <= balance)
+        {
+            cout << "Transfer was successful!" << endl;
+            balance -= transferSum;
+            cout << "If you want to see your balance after transfer enter your username:" << endl;
+            string yourUsername;
+            cin >> yourUsername;
+            saveBalanceToFile(balance, yourUsername);
+            cout << "Your updated balance is: " << balance << endl;
+            Name = uName;
+            transfer = transferSum;
+            balances = balance;
+            Username = yourUsername;
+            double balanceSum = sum(uName);
+            send(uName, balanceSum, transferSum);
+            menu(balance);
+
+        }
+        else
+        {
+            cout << "Transfer cancelled, please try again!" << endl;
+        }
+    }
+    else
+    {
+        cout << "Invalid Username";
+    }
+
+
+
+}
+
+
+
+void menu(double currentBalance)
+{
+    cout << endl;
+    cout << "If you wish to bequeath an asset or liability you can choose from the options bellow." << endl;
+    cout << "1. Asset" << endl;
+    cout << "2. Liability" << endl;
+
+
+
+
+    int choose;
+    cin >> choose;
+    if (choose == 1)
+    {
+        asset(currentBalance);
+    }
+    else if (choose == 2)
+    {
+
+    }
+    else
+    {
+        exc(choose);
+    }
+}
 
 
 void account()
@@ -131,35 +248,7 @@ void account()
     case 8: cout << house1 << endl << house8 << endl << house4; break;
     case 9: cout << house9; break;
     };*/
-
-
-    cout << endl;
-    cout << "If you wish to bequeath an asset,liability or will, you can choose from the options bellow." << endl;
-    cout << "1. Asset" << endl;
-    cout << "2. Liability" << endl;
-    cout << "3. Will" << endl;
-
-
-
-
-    int choose;
-    cin >> choose;
-    if (choose == 1)
-    {
-        asset(currentBalance);
-    }
-    else if (choose == 2)
-    {
-
-    }
-    else if (choose == 3)
-    {
-
-    }
-    else
-    {
-        exc(choose);
-    }
+    menu(currentBalance);
 }
 
     
