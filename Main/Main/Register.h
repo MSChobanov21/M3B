@@ -3,9 +3,9 @@
 #include <fstream>
 #include <string>
 
-//#include <vector>
 using namespace std;
 
 
 void reg();
+bool check(string username, string password, string userFile, string passFile);
 void login();

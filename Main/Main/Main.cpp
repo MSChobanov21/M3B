@@ -1,11 +1,10 @@
-#include "Header.h"
-#include "Page.h"
+#include "Register.h"
 
 int main() 
 {
     string answer;
 
-    cout << "Do you have an account or want to create a new one?" << endl;
+    cout << "If you have an account enter 'login' or if you want to create a new one enter 'create'!" << endl;
     cin >> answer;
     if (answer == "create")
     {
@@ -14,6 +13,10 @@ int main()
     else if (answer == "login")
     {
         login();
+    }
+    else if (answer != "create" or answer != "login")
+    {
+        cout << "Invalid input";
     }
 }
 

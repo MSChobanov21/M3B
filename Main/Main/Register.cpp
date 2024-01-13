@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "Register.h"
 #include "Page.h"
 
 void reg()
@@ -93,7 +93,7 @@ void login()
     if (check(userName, Pass, "names.txt", "passwords.txt")) 
     {
         cout << "Hello " << userName << "," << endl << "This is your bank account!" << endl;
-        account();
+        account(userName);
     }
     else 
     {

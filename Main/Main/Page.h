@@ -7,9 +7,10 @@
 #include <sstream>
 using namespace std;
 
-void account();
+
 void exc(int num);
-double balanceFunc();
-void menu(double currentBalance);
-void saveBalanceToFile(double balance, string user);
 void addMoney(double& balance);
+void saveBalanceToFile(double balance, string user);
+double balanceFunc(string userName);
+void menu(double currentBalance);
+void account(string user);

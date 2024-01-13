@@ -4,7 +4,6 @@
 #include <string>
 using namespace std;
 
-
-bool checkIfYouHaveWill(string username, double bal);
-void Will(string uName, double transferSum, double balance, string yourUsername);
+double sum(string userName);
+void send(string user, double balance, double transferSum);
 void asset(double balance);

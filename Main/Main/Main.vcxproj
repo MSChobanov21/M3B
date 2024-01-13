@@ -147,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="Register.h" />
     <ClInclude Include="Liability.h" />
     <ClInclude Include="Page.h" />
   </ItemGroup>

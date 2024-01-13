@@ -1,23 +1,17 @@
 #include "Page.h"
 #include "Asset.h"
 
-string Name;
-double transfer;
-double balances;
-string Username;
-
 void exc(int num)
 {
     try
     {
         num != 1;
         num != 2;
-        num != 3;
         throw num;
     }
     catch (int choose1)
     {
-        cout << "Please enter a number between 1,2 and 3.";
+        cout << "Please enter a number between 1 and 2.";
     }
 }
 
@@ -53,12 +47,12 @@ void saveBalanceToFile(double balance, string user)
 }
 
 
-double balanceFunc()
+double balanceFunc(string userName)
 {
     double balance = 0.0;
-    string userName;
+    /*string userName;
     cout << "Enter again you username to check balance:" << endl;
-    cin >> userName;
+    cin >> userName;*/
 
     // Load previous balance from file (if available)
     ifstream file(userName + ".txt");
@@ -72,8 +66,8 @@ double balanceFunc()
     // Menu for adding money
     char choice;
     do {
-        cout << "1. Add money\n";
-        cout << "2. Exit\n";
+        cout << "1. Add money" << endl;
+        cout << "2. Save balance" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -95,103 +89,12 @@ double balanceFunc()
 }
 
 
-double sum(string userName)
-{
-    double balance = 0.0;
-    ifstream file(userName + ".txt");
-    if (file.is_open())
-    {
-        file >> balance;
-        file.close();
-        return balance;
-    }
-}
-
-void send(string user, double balance, double transferSum)
-{
-    ofstream file(user + ".txt");
-
-    if (file.is_open())
-    {
-        balance = balance + transferSum;
-        file << balance;
-        file.close();
-        cout << "Balance saved to file." << endl;
-    }
-    else
-    {
-        cout << "Error: Unable to open file for saving balance." << endl;
-    }
-}
-
-
-void asset(double balance)
-{
-    cout << "Who do you want to transfer money to?" << endl;
-    cout << "Enter username: ";
-    string uName;
-    cin >> uName;
-
-    ifstream file("names.txt");
-    bool found = false;
-    string line;
-    while (getline(file, line))
-    {
-        if (line.find(uName) != string::npos)
-        {
-            found = true;
-        }
-    }
-    file.close();
-
-    if (found)
-    {
-        cout << "What amount of money do you want to transfer to " << uName << "?" << endl;
-        double transferSum;
-        cin >> transferSum;
-        if (transferSum <= balance)
-        {
-            cout << "Transfer was successful!" << endl;
-            balance -= transferSum;
-            cout << "If you want to see your balance after transfer enter your username:" << endl;
-            string yourUsername;
-            cin >> yourUsername;
-            saveBalanceToFile(balance, yourUsername);
-            cout << "Your updated balance is: " << balance << endl;
-            Name = uName;
-            transfer = transferSum;
-            balances = balance;
-            Username = yourUsername;
-            double balanceSum = sum(uName);
-            send(uName, balanceSum, transferSum);
-            menu(balance);
-
-        }
-        else
-        {
-            cout << "Transfer cancelled, please try again!" << endl;
-        }
-    }
-    else
-    {
-        cout << "Invalid Username";
-    }
-
-
-
-}
-
-
-
 void menu(double currentBalance)
 {
     cout << endl;
     cout << "If you wish to bequeath an asset or liability you can choose from the options bellow." << endl;
     cout << "1. Asset" << endl;
     cout << "2. Liability" << endl;
-
-
-
 
     int choose;
     cin >> choose;
@@ -210,7 +113,7 @@ void menu(double currentBalance)
 }
 
 
-void account()
+void account(string user)
 {
     srand(static_cast<unsigned int>(time(0)));
 
@@ -229,7 +132,7 @@ void account()
     house9 = "House in Varna, Bulgaria";
     */
     //cout << "This is the value of your assets: " << balance << endl;
-    double currentBalance = balanceFunc();
+    double currentBalance = balanceFunc(user);
 
 
 
