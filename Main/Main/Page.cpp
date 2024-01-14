@@ -7,11 +7,12 @@ void exc(int num)
     {
         num != 1;
         num != 2;
+        num != 3;
         throw num;
     }
     catch (int choose1)
     {
-        cout << "Please enter a number between 1 and 2.";
+        cout << "Please enter a number between 1,2 and 3.";
     }
 }
 
@@ -22,8 +23,7 @@ void addMoney(double& balance)
     double amount;
     cout << "Enter the amount to add: ";
     cin >> amount;
-
-    // Update balance
+        
     balance += amount;
 
     cout << "Money added successfully. New balance: " << balance << endl;
@@ -45,14 +45,12 @@ void saveBalanceToFile(double balance, string user)
 
 void menuBalance(double balance, string userName)
 {
-    // Menu for adding money
     char choice;
     do {
         cout << "1. Add money" << endl;
         cout << "2. Save balance" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
-
         switch (choice)
         {
         case '1':
@@ -90,27 +88,34 @@ double balanceFunc(string userName)
 
 void menu(double currentBalance)
 {
-    system("cls");
-    cout << endl;
-    cout << "If you wish to bequeath an asset or liability you can choose from the options bellow." << endl;
-    cout << "1. Asset" << endl;
-    cout << "2. Liability" << endl;
-
-    int choose;
-    cin >> choose;
-    if (choose == 1)
-    {
+    char choose;
+    do {
         system("cls");
-        asset(currentBalance);
-    }
-    else if (choose == 2)
-    {
-
-    }
-    else
-    {
-        exc(choose);
-    }
+        cout << endl;
+        cout << "If you wish to bequeath an asset or liability you can choose from the options bellow." << endl;
+        cout << "1. Asset" << endl;
+        cout << "2. Liability" << endl;
+        cout << "3. Return" << endl;
+        cin >> choose;
+        switch (choose)
+        {
+        case '1':
+            system("cls");
+            asset(currentBalance);
+            break;
+        case '2':
+            break;
+        case '3':
+            system("cls");
+            cout << "If you want to return to balance menu enter your username:";
+            string userName;
+            cin >> userName;
+            //menuBalance(currentBalance, string userName);
+            break;
+        default:
+            exc(choose);
+        }
+    } while (choose != '3');
 }
 
 

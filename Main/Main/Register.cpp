@@ -139,7 +139,8 @@ void login()
     }
     else 
     {
-        cout << endl << "Invalid username or password." << endl;
+        cout << endl << "Invalid username or password. Try again!" << endl;
+        login();
     }
 
 }
@@ -169,8 +170,8 @@ void mainMenu()
     }
     else if (answer != "create" or answer != "login")
     {
-        cout << "Invalid input";
+        cout << "Invalid input" << endl;
     }
-    //mainMenu();
+    
 }
 
