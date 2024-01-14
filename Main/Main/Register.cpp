@@ -4,6 +4,8 @@
 #include "Front-end.h"
 
 
+string path;
+
 bool userExists(string username)
 {
     ifstream file("names.txt");
@@ -57,6 +59,8 @@ void reg()
         {
             string Pass;
             cin >> Pass;
+
+
             out1 << Pass << endl;
             out1.close();
             newPass = Pass;
@@ -140,7 +144,8 @@ void mainMenu()
 {
     system("cls");
     int choice;
-    string path = "../../textFiles/mainMenu.txt";
+
+    path = "../../textFiles/mainMenu.txt";
     
     displayFunc(path);
 
