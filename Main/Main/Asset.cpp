@@ -1,5 +1,6 @@
 #include "Asset.h"
 #include "Page.h"
+#include "Register.h"
 
 double sum(string userName)
 {
@@ -65,6 +66,8 @@ void asset(double balance)
             double balanceSum = sum(uName);
             send(uName, balanceSum, transferSum);
             menuBalance(balanceSum, yourUsername);
+            system("cls");
+            mainMenu();
 
         }
         else
@@ -76,8 +79,6 @@ void asset(double balance)
     {
         cout << "Invalid Username";
     }
-
-
 
 }
 

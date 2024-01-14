@@ -1,9 +1,28 @@
 #include "Register.h"
 #include "Page.h"
 
+bool userExists(string username)
+{
+    ifstream file("names.txt");
+    string line;
+
+    while (getline(file, line))
+    {
+        if (line.find(username) != string::npos)
+        {
+            file.close();
+            return true;
+        }
+    }
+
+    file.close();
+    return false;
+}
+
+
 void reg()
 {
-    string confirmPass, newPass;
+    string confirmPass, newPass, newName;
     char numLog;
 
     cout << endl << "**** Create New Account ****" << endl;
@@ -17,39 +36,47 @@ void reg()
         cin >> name;
         out << name << endl;
         out.close();
+        newName = name;
     }
-
-    cout << endl << "Enter new password: ";
-    // make it cin * instead of the password
-    ofstream out1("passwords.txt", std::ios_base::app);
-    if (out1.is_open())
+    if (userExists(newName))
     {
-        string Pass;
-        cin >> Pass;
-        out1 << Pass << endl;
-        out1.close();
-        newPass = Pass;
+        system("cls");
+        cout << "Username already exists. Try a different one." << endl;
+        reg();
     }
-
-    cout << endl << "Confirm the password: ";
-    cin >> confirmPass;
-
-    if (confirmPass == newPass) 
+    else
     {
-        //Add smth like a check mark
-        cout << "\n===================================\n";
-        cout << "\nSuccessfully new account created! \n \n";
-        cout << "===================================\n";
-        cout << endl;
-        cout << "If you want to login in your account enter '1':" << endl;
-    }
-    else 
-    {
-        cout << endl << "Password confirmation not correct!" << endl;
+        cout << endl << "Enter new password: ";
+        // make it cin * instead of the password
+        ofstream out1("passwords.txt", std::ios_base::app);
+        if (out1.is_open())
+        {
+            string Pass;
+            cin >> Pass;
+            out1 << Pass << endl;
+            out1.close();
+            newPass = Pass;
+        }
 
-    }
+        cout << endl << "Confirm the password: ";
+        cin >> confirmPass;
 
-    // Add system("cls")
+        if (confirmPass == newPass)
+        {
+            //Add smth like a check mark
+            cout << "\n===================================\n";
+            cout << "\nSuccessfully new account created! \n \n";
+            cout << "===================================\n";
+            cout << endl;
+            cout << "If you want to login in your account enter '1':" << endl;
+        }
+        else
+        {
+            cout << endl << "Password confirmation not correct!" << endl;
+
+        }
+    }
+    
     cin >> numLog;
     if (numLog == '1')
     {
@@ -102,5 +129,46 @@ void login()
         cout << endl << "Invalid username or password." << endl;
     }
 
+}
+
+
+void mainMenu()
+{
+    int choice;
+    do
+    {
+        cout << "1. Register\n";
+        cout << "2. Login\n";
+        cout << "3. Logout\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            system("cls");
+            reg();
+            break;
+
+        case 2:
+            system("cls");
+            login();
+            break;
+
+        case 3:
+            system("cls");
+            cout << "Logout successful!\n";
+            break;
+
+        case 4:
+            //Add exit
+            cout << "Exiting...\n";
+            break;
+
+        default:
+            cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 4);
 }
 
