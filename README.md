@@ -12,6 +12,9 @@
 </p>
 
 ## 📋 Description
+Our application is a bank account, through which you can send money, make wills of money and property
+to other accounts that have an account in our bank.
+
 
 ## 🚀 Languages 
   <p align="left"> 
