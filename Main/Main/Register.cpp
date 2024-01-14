@@ -1,5 +1,8 @@
 #include "Register.h"
 #include "Page.h"
+#include "Asset.h"
+#include "Front-end.h"
+
 
 bool userExists(string username)
 {
@@ -22,6 +25,8 @@ bool userExists(string username)
 
 void reg()
 {
+    
+
     string confirmPass, newPass, newName;
     char numLog;
 
@@ -134,41 +139,58 @@ void login()
 
 void mainMenu()
 {
+    system("cls");
     int choice;
-    do
+
+    
+
+    cout << "1. Register\n";
+    cout << "2. Login\n";
+    cout << "3. Logout\n";
+    cout << "4. Exit\n";
+    cout << "Enter your choice: ";
+    
+     
+    cin >> choice;
+    cout << endl;
+    if (!isdigit(choice))
     {
-        cout << "1. Register\n";
-        cout << "2. Login\n";
-        cout << "3. Logout\n";
-        cout << "4. Exit\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
+        cout << "Invalid value. Reset the program.";
+    }
+    else if (choice < 1 || choice > 4)
+    {
+        cout << "Invalid value. Reset the program";
+    }
+        
+       
+    
+    
+    switch (choice)
+    {
+    case 1:
+        system("cls");
 
-        switch (choice)
-        {
-        case 1:
-            system("cls");
-            reg();
-            break;
+        
+        
+        reg();
+        break;
 
-        case 2:
-            system("cls");
-            login();
-            break;
+    case 2:
+        system("cls");
+        login();
+        break;
 
-        case 3:
-            system("cls");
-            cout << "Logout successful!\n";
-            break;
+    case 3:
+        system("cls");
+        cout << "Logout successful!\n";
+        break;
 
-        case 4:
-            //Add exit
-            cout << "Exiting...\n";
-            break;
+    case 4:
+        //Add exit
+        cout << "Exiting...\n";
+        break;
 
-        default:
-            cout << "Invalid choice. Please try again.\n";
-        }
-    } while (choice != 4);
+    }
+    
 }
 
