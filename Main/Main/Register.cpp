@@ -8,15 +8,14 @@ bool userExists(string username)
 {
     ifstream file("names.txt");
     string line;
-
-    while (getline(file, line))
-    {
+    getline(file, line);
+    
         if (line.find(username) != string::npos)
         {
             file.close();
             return true;
         }
-    }
+    
 
     file.close();
     return false;
@@ -148,20 +147,17 @@ void mainMenu()
     cout << "1. Register\n";
     cout << "2. Login\n";
     cout << "3. Logout\n";
-    cout << "4. Exit\n";
     cout << "Enter your choice: ";
     
      
     cin >> choice;
     cout << endl;
+
     if (!isdigit(choice))
-    {
         cout << "Invalid value. Reset the program.";
-    }
-    else if (choice < 1 || choice > 4)
-    {
+    else if (choice < 1 || choice >= 4)
         cout << "Invalid value. Reset the program";
-    }
+    
         
        
     
@@ -191,10 +187,7 @@ void mainMenu()
         cout << "Logout successful!\n";
         break;
 
-    case 4:
-        //Add exit
-        cout << "Exiting...\n";
-        break;
+    
 
     }
     
