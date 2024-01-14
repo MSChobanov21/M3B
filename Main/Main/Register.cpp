@@ -154,6 +154,7 @@ void mainMenu()
     cout << "If you have an account enter 'login' or if you want to create a new one enter 'create'!" << endl;
     cout << "Enter answer: ";
     cin >> answer;
+
     if (answer == "create")
     {
         system("cls");
@@ -170,8 +171,13 @@ void mainMenu()
     }
     else if (answer != "create" or answer != "login")
     {
+        system("cls");
         cout << "Invalid input" << endl;
+        mainMenu();
+        
+
     }
+    
     
 }
 

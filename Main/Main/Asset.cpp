@@ -102,7 +102,8 @@ void asset(double balance, string user)
     }
     else
     {
-        cout << "Invalid Username";
+        cout << "Invalid Username. Try again!" << endl;
+        asset(balance, user);
     }
 
 }
