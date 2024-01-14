@@ -40,32 +40,32 @@ def see_your_balance(balance, user, u_name, transfer_sum):
 
 
 #4
-def asset(balance):
-    print("Who do you want to transfer money to?")
-    print("Enter username: ")
-    uName = input()
-    with open("names.txt", "r") as file:
-        found = False
-        for line in file:
-            if uName in line:
-                found = True
+def asset(balance, user):
+    print("Who do you want to bequeath money to?")
+    u_name = input("Enter username: ")
+
+    with open("names.txt") as file:
+        found = any(u_name in line for line in file)
+
     if found:
-        print("What amount of money do you want to transfer to", uName, "?")
-        transferSum = float(input())
-        if transferSum <= balance:
-            print("Transfer was successful!")
-            balance -= transferSum
-            print("If you want to see your balance after transfer enter your username:")
-            yourUsername = input()
-            saveBalanceToFile(balance, yourUsername)
-            print("Your updated balance is:", balance)
-            balanceSum = sum(uName)
-            send(uName, balanceSum, transferSum)
-            menu(balance)
+        while True:
+            try:
+                transfer_sum = float(input(f"What amount of money do you want to bequeath to {u_name}?\nEnter amount: "))
+                break
+            except ValueError:
+                print("Please enter a number!")
+
+        if transfer_sum <= balance:
+            print("Bequeath was successful!")
+            balance -= transfer_sum
+            see_your_balance(balance, user, u_name, transfer_sum)
         else:
-            print("Transfer cancelled, please try again!")
+            clear_screen()
+            print("Bequeath cancelled, please try again!")
+            asset(balance, user)
     else:
-        print("Invalid Username")
+        print("Invalid Username. Try again!")
+        asset(balance, user)
 
 #5
 def main():
@@ -98,17 +98,29 @@ def addMoney(balance):
 
 #8
 
-def menuBalance(balance, userName):
-    choice = ''
-    while choice != '2':
+def menu_balance(balance, user_name):
+    while True:
         print("1. Add money")
         print("2. Save balance")
+        print("3. Make will")
+        print("4. Logout")
         choice = input("Enter your choice: ")
+
         if choice == '1':
-            addMoney(balance)
+            clear_screen()
+            add_money(balance)
         elif choice == '2':
-            saveBalanceToFile(balance, userName)
+            clear_screen()
+            save_balance_to_file(balance, user_name)
+        elif choice == '3':
+            clear_screen()
+            asset(balance, user_name)
+        elif choice == '4':
+            clear_screen()
+            main_menu()
+            break
         else:
+            clear_screen()
             print("Invalid choice. Try again.")
 
 
@@ -137,33 +149,12 @@ def balance_func(user_name):
     return balance
 
 
+
+
+
+
+
 #11
-def menu(current_balance, user):
-    while True:
-        print("\nIf you wish to bequeath an asset or liability, choose from the options below:")
-        print("1. Asset")
-        print("2. Liability")
-        choose = input("Enter your choice: ")
-
-        if choose == '1':
-            clear_screen()
-            asset(current_balance, user)
-        elif choose == '2':
-            clear_screen()
-            liability()
-            break
-        else:
-            exc(choose)
-
-#12
-def account(user):
-    currentBalance = balanceFunc(user)
-    menu(currentBalance, user)
-
-
-
-
-#13
 def userExists(username):
     with open("names.txt", "r") as file:
         for line in file:
@@ -174,7 +165,7 @@ def userExists(username):
 
 
 
-#14
+#12
 
 def check(username, password, userFile, passFile):
     with open(userFile, 'r') as file, open(passFile, 'r') as file1:
@@ -187,7 +178,7 @@ def check(username, password, userFile, passFile):
                 return storedPassword == password
     return False
 
-#15
+#13
 def login():
     user_name = input("\nEnter your username: ")
     password = input("\nEnter your password: ")
@@ -205,7 +196,7 @@ def login():
         print("\nInvalid username or password. Try again!")
         login()
 
-#16
+#14
 
 def main_menu():
     path = "../../textFiles/mainMenu.txt"
@@ -232,7 +223,7 @@ def main_menu():
 
 
 
-#17 front-end function
+#15 front-end function
 
 def displayFunc(path):
     with open(path, 'r') as newfile:
@@ -240,6 +231,51 @@ def displayFunc(path):
             for line in newfile:
                 print(line)
 
+
+
+#16
+import getpass
+
+def reg():
+    print("\n**** Create New Account ****")
+
+    new_name = input("\nEnter new username: ")
+
+    with open("names.txt", 'a') as out:
+        out.write(new_name + '\n')
+
+    if user_exists(new_name):
+        clear_screen()
+        print("Username already exists. Try a different one.")
+        reg()
+    else:
+        print("\nEnter new password: ", end='')
+        new_pass = getpass.getpass()
+
+        with open("passwords.txt", 'a') as out1:
+            out1.write(new_pass + '\n')
+
+        confirm_pass = getpass.getpass("\nConfirm the password: ")
+
+        if confirm_pass == new_pass:
+            print("\n===================================")
+            print("\nSuccessfully created a new account!\n")
+            print("===================================")
+            print("\nIf you want to log in to your account, enter '1':")
+
+        else:
+            print("\nPassword confirmation not correct!")
+
+    while True:
+        num_log = input()
+        if num_log == '1':
+            clear_screen()
+            path = "../../textFiles/login.txt"
+            display_func(path)
+            login()
+            break
+        else:
+            print("Wrong input. Try again:")
 
 
 
