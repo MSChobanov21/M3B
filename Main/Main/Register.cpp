@@ -141,8 +141,9 @@ void mainMenu()
 {
     system("cls");
     int choice;
-
+    string path = "../../textFiles/mainMenu.txt";
     
+    displayFunc(path);
 
     cout << "1. Register\n";
     cout << "2. Login\n";
@@ -170,13 +171,18 @@ void mainMenu()
     case 1:
         system("cls");
 
-        
+        path = "../../textFiles/register.txt";
+        displayFunc(path);
         
         reg();
         break;
 
     case 2:
         system("cls");
+
+        path = "../../textFiles/login.txt";
+        displayFunc(path);
+
         login();
         break;
 
