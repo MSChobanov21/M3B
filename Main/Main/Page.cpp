@@ -1,5 +1,7 @@
 #include "Page.h"
 #include "Asset.h"
+#include "Liability.h"
+#include "Register.h"
 
 void exc(int num)
 {
@@ -86,10 +88,11 @@ double balanceFunc(string userName)
 }
 
 
-void menu(double currentBalance)
+void menu(double currentBalance, string user)
 {
     char choose;
-    do {
+    do 
+    {
         system("cls");
         cout << endl;
         cout << "If you wish to bequeath an asset or liability you can choose from the options bellow." << endl;
@@ -101,29 +104,28 @@ void menu(double currentBalance)
         {
         case '1':
             system("cls");
-            asset(currentBalance);
+            asset(currentBalance, user);
             break;
         case '2':
+            system("cls");
+            liability();
             break;
         case '3':
             system("cls");
-            cout << "If you want to return to balance menu enter your username:";
-            string userName;
-            cin >> userName;
             //menuBalance(currentBalance, string userName);
             break;
         default:
             exc(choose);
         }
     } while (choose != '3');
-}
 
+}
 
 void account(string user)
 {
     
     double currentBalance = balanceFunc(user);
-    menu(currentBalance);
+    menu(currentBalance, user);
 }
 
     

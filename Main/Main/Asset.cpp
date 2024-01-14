@@ -28,7 +28,31 @@ void send(string user, double balance, double transferSum)
 }
 
 
-void asset(double balance)
+void seeYourBalance(double balance, string user, string uName, double transferSum)
+{
+    cout << "If you want to see your balance after bequeath enter your username:" << endl;
+    string yourUsername;
+    cin >> yourUsername;
+    if (user == yourUsername)
+    {
+        saveBalanceToFile(balance, yourUsername);
+        system("cls");
+        cout << "Your updated balance is: " << balance << endl;
+        double balanceSum = sum(uName);
+        send(uName, balanceSum, transferSum);
+        menuBalance(balanceSum, yourUsername);
+        system("cls");
+        mainMenu();
+    }
+    else
+    {
+        cout << "Invalid Username" << endl;
+        seeYourBalance(balance, user, uName, transferSum);
+    }
+}
+
+
+void asset(double balance, string user)
 {
 
     cout << "Who do you want to bequeath money to?" << endl;
@@ -60,17 +84,8 @@ void asset(double balance)
             {
                 cout << "Bequeath was successful!" << endl;
                 balance -= transferSum;
-                cout << "If you want to see your balance after bequeath enter your username:" << endl;
-                string yourUsername;
-                cin >> yourUsername;
-                saveBalanceToFile(balance, yourUsername);
-                system("cls");
-                cout << "Your updated balance is: " << balance << endl;
-                double balanceSum = sum(uName);
-                send(uName, balanceSum, transferSum);
-                menuBalance(balanceSum, yourUsername);
-                system("cls");
-                mainMenu();
+                seeYourBalance(balance, user, uName, transferSum);
+                    
 
             }
             else
