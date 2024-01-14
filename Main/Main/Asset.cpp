@@ -95,8 +95,9 @@ void asset(double balance, string user)
         }
         else
         {
+            system("cls");
             cout << "Bequeath cancelled, please try again!" << endl;
-
+            asset(balance, user);
         }
     }
     else

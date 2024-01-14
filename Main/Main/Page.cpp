@@ -1,6 +1,5 @@
 #include "Page.h"
 #include "Asset.h"
-#include "Liability.h"
 #include "Register.h"
 
 
@@ -17,8 +16,6 @@ void exc(int num)
         cout << "Please enter a number between 1 and 2.";
     }
 }
-
-
 
 
 // Function to add money to the account
@@ -40,7 +37,7 @@ void addMoney(double& balance)
     
 }
 
-// Function to save balance to a text file
+// Function to save balance to a file
 void saveBalanceToFile(double balance, string user) 
 {
     ofstream file(user + ".txt");
@@ -76,7 +73,7 @@ void menuBalance(double balance, string userName)
             break;
         case '3':
             system("cls");
-            menu(balance, userName);
+            asset(balance, userName);
             break;
         case '4':
             system("cls");
@@ -93,7 +90,6 @@ double balanceFunc(string userName)
 {
     double balance = 0.0;
 
-    // Load previous balance from file (if available)
     ifstream file(userName + ".txt");
     if (file.is_open()) 
     {
@@ -109,38 +105,5 @@ double balanceFunc(string userName)
 }
 
 
-void menu(double currentBalance, string user)
-{
-    char choose;
-    do 
-    {
-        cout << endl;
-        cout << "If you wish to bequeath an asset or liability you can choose from the options bellow." << endl;
-        cout << "1. Asset" << endl;
-        cout << "2. Liability" << endl;
-        cin >> choose;
-        switch (choose)
-        {
-        case '1':
-            system("cls");
-            asset(currentBalance, user);
-            break;
-        case '2':
-            system("cls");
-            liability();
-            break;
-        default:
-            exc(choose);
-        }
-    } while (choose != '2');
-
-}
-
-void account(string user)
-{
-    
-    double currentBalance = balanceFunc(user);
-    menu(currentBalance, user);
-}
 
     

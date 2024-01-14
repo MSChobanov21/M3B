@@ -53,7 +53,6 @@ void reg()
     else
     {
         cout << endl << "Enter new password: ";
-        // make it cin * instead of the password
         ofstream out1("passwords.txt", std::ios_base::app);
         if (out1.is_open())
         {
@@ -71,7 +70,6 @@ void reg()
 
         if (confirmPass == newPass)
         {
-            //Add smth like a check mark
             cout << "\n===================================\n";
             cout << "\nSuccessfully new account created! \n \n";
             cout << "===================================\n";
@@ -93,6 +91,8 @@ void reg()
         {
         case '1':
             system("cls");
+            path = "../../textFiles/login.txt";
+            displayFunc(path);
             login();
             break;
         default:
@@ -127,6 +127,7 @@ bool check(string username, string password, string userFile, string passFile)
 
 void login()
 {
+
     string userName, Pass;
 
     cout << endl << "Enter your username: ";
@@ -143,7 +144,8 @@ void login()
         displayFunc(path);
 
         cout << "Hello " << userName << "," << endl << "This is your bank account!" << endl;
-        account(userName);
+        
+        balanceFunc(userName);
     }
     else 
     {
@@ -183,9 +185,7 @@ void mainMenu()
         cout << "Invalid input" << endl;
         mainMenu();
         
-
     }
-    
     
 }
 
