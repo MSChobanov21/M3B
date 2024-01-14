@@ -74,8 +74,24 @@ def addMoney(balance):
     balance += amount
     print("Money added successfully. New balance:", balance)
 
+#7 
 
-#7
+def menuBalance(balance, userName):
+    choice = ''
+    while choice != '2':
+        print("1. Add money")
+        print("2. Save balance")
+        choice = input("Enter your choice: ")
+        if choice == '1':
+            addMoney(balance)
+        elif choice == '2':
+            saveBalanceToFile(balance, userName)
+        else:
+            print("Invalid choice. Try again.")
+
+
+
+#8
 def saveBalanceToFile(balance, user):
     with open(user + ".txt", "w") as file:
         file.write(str(balance))
@@ -84,7 +100,7 @@ def saveBalanceToFile(balance, user):
         print("Error: Unable to open file for saving balance.")
 
 
-#8
+#9
 def balanceFunc(userName):
     balance = 0.0
     with open(userName + ".txt", 'r') as file:
@@ -104,7 +120,7 @@ def balanceFunc(userName):
     return balance
 
 
-#9
+#10
 def menu(currentBalance):
     print()
     print("If you wish to bequeath an asset or liability you can choose from the options below.")
@@ -119,14 +135,40 @@ def menu(currentBalance):
         exc(choose)
 
 
-#10
+#11
 def account(user):
     currentBalance = balanceFunc(user)
     print("Those are your liabilities: ")
     menu(currentBalance)
 
 
-#11
+
+
+#12
+def userExists(username):
+    with open("names.txt", "r") as file:
+        for line in file:
+            if username in line:
+                return True
+    return False
+
+
+
+
+#13
+
+def check(username, password, userFile, passFile):
+    with open(userFile, 'r') as file, open(passFile, 'r') as file1:
+        storedUsername = ''
+        storedPassword = ''
+        for line1, line2 in zip(file, file1):
+            storedUsername = line1.strip()
+            storedPassword = line2.strip()
+            if storedUsername == username:
+                return storedPassword == password
+    return False
+
+#14
 def login():
     userName = input("Enter Your UserName: ")
     Pass = input("Enter Your password: ")
@@ -136,6 +178,39 @@ def login():
         account(userName)
     else:
         print("Invalid username or password.")
+
+#15
+
+def mainMenu():
+    answer = input("If you have an account enter 'login' or if you want to create a new one enter 'create'!\nEnter answer: ")
+    if answer == "create":
+        path = "../../textFiles/register.txt"
+        displayFunc(path)
+        reg()
+    elif answer == "login":
+        path = "../../textFiles/login.txt"
+        displayFunc(path)
+        login()
+    else:
+        print("Invalid input")
+
+
+
+
+
+
+
+
+
+#16 front-end function
+
+def displayFunc(path):
+    with open(path, 'r') as newfile:
+        if newfile:
+            for line in newfile:
+                print(line)
+
+
 
 
 
