@@ -29,6 +29,7 @@ void addMoney(double& balance)
     balance += amount;
 
     cout << "Money added successfully. New balance: " << balance << endl;
+    cout << "Before you make will save your money!" << endl;
 }
 
 // Function to save balance to a text file
@@ -51,6 +52,8 @@ void menuBalance(double balance, string userName)
     do {
         cout << "1. Add money" << endl;
         cout << "2. Save balance" << endl;
+        cout << "3. Make will" << endl;
+        cout << "4. Logout" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice)
@@ -62,10 +65,17 @@ void menuBalance(double balance, string userName)
         case '2':
             saveBalanceToFile(balance, userName);
             break;
+        case '3':
+            menu(balance, userName);
+            break;
+        case '4':
+            system("cls");
+            mainMenu();
+            break;
         default:
             cout << "Invalid choice. Try again." << endl;
         }
-    } while (choice != '2');
+    } while (choice != '4');
 }
 
 double balanceFunc(string userName)

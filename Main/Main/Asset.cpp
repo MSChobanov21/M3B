@@ -30,7 +30,7 @@ void send(string user, double balance, double transferSum)
 
 void seeYourBalance(double balance, string user, string uName, double transferSum)
 {
-    cout << "If you want to see your balance after bequeath enter your username:" << endl;
+    cout << "To see your balance after bequeath enter your username:" << endl;
     string yourUsername;
     cin >> yourUsername;
     if (user == yourUsername)
