@@ -40,19 +40,37 @@ void saveBalanceToFile(double balance, string user)
         file.close();
         cout << "Balance saved to file." << endl;
     }
-    else 
-    {
-        cout << "Error: Unable to open file for saving balance." << endl;
-    }
 }
 
+
+void menuBalance(double balance, string userName)
+{
+    // Menu for adding money
+    char choice;
+    do {
+        cout << "1. Add money" << endl;
+        cout << "2. Save balance" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case '1':
+            system("cls");
+            addMoney(balance);
+            break;
+        case '2':
+            saveBalanceToFile(balance, userName);
+            break;
+        default:
+            cout << "Invalid choice. Try again." << endl;
+        }
+    } while (choice != '2');
+}
 
 double balanceFunc(string userName)
 {
     double balance = 0.0;
-    /*string userName;
-    cout << "Enter again you username to check balance:" << endl;
-    cin >> userName;*/
 
     // Load previous balance from file (if available)
     ifstream file(userName + ".txt");
@@ -63,26 +81,7 @@ double balanceFunc(string userName)
         cout << "Previous balance loaded: " << balance << endl;
     }
 
-    // Menu for adding money
-    char choice;
-    do {
-        cout << "1. Add money" << endl;
-        cout << "2. Save balance" << endl;
-        cout << "Enter your choice: ";
-        cin >> choice;
-
-        switch (choice) 
-        {
-        case '1':
-            addMoney(balance);
-            break;
-        case '2':
-            saveBalanceToFile(balance, userName);
-            break;
-        default:
-            cout << "Invalid choice. Try again." << endl;
-        }
-    } while (choice != '2');
+    menuBalance(balance, userName);
 
     return balance;
 
@@ -91,6 +90,7 @@ double balanceFunc(string userName)
 
 void menu(double currentBalance)
 {
+    system("cls");
     cout << endl;
     cout << "If you wish to bequeath an asset or liability you can choose from the options bellow." << endl;
     cout << "1. Asset" << endl;
@@ -100,6 +100,7 @@ void menu(double currentBalance)
     cin >> choose;
     if (choose == 1)
     {
+        system("cls");
         asset(currentBalance);
     }
     else if (choose == 2)
@@ -115,17 +116,8 @@ void menu(double currentBalance)
 
 void account(string user)
 {
-
-    /*
-    house8 = "Apartment in Plovdiv, Bulgaria";
-    house9 = "House in Varna, Bulgaria";
-    */ 
+    
     double currentBalance = balanceFunc(user);
-
-
-
-    cout << "Those are your liabilities: " << endl;
-
     menu(currentBalance);
 }
 

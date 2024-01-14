@@ -6,3 +6,4 @@ try
 proba
 abc
 bob
+logo

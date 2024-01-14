@@ -8,10 +8,12 @@ int main()
     cin >> answer;
     if (answer == "create")
     {
+        system("cls");
         reg();
     }
     else if (answer == "login")
     {
+        system("cls");
         login();
     }
     else if (answer != "create" or answer != "login")

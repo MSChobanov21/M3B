@@ -24,16 +24,12 @@ void send(string user, double balance, double transferSum)
         file.close();
         cout << "Balance saved to file." << endl;
     }
-    else
-    {
-        cout << "Error: Unable to open file for saving balance." << endl;
-    }
 }
 
 
 void asset(double balance)
 {
-    cout << "Who do you want to transfer money to?" << endl;
+    cout << "Who do you want to bequeath money to?" << endl;
     cout << "Enter username: ";
     string uName;
     cin >> uName;
@@ -52,26 +48,28 @@ void asset(double balance)
 
     if (found)
     {
-        cout << "What amount of money do you want to transfer to " << uName << "?" << endl;
+        cout << "What amount of money do you want to bequeath to " << uName << "?" << endl;
+        cout << "Enter amount: ";
         double transferSum;
         cin >> transferSum;
         if (transferSum <= balance)
         {
-            cout << "Transfer was successful!" << endl;
+            cout << "Bequeath was successful!" << endl;
             balance -= transferSum;
-            cout << "If you want to see your balance after transfer enter your username:" << endl;
+            cout << "If you want to see your balance after bequeath enter your username:" << endl;
             string yourUsername;
             cin >> yourUsername;
             saveBalanceToFile(balance, yourUsername);
+            system("cls");
             cout << "Your updated balance is: " << balance << endl;
             double balanceSum = sum(uName);
             send(uName, balanceSum, transferSum);
-            menu(balance);
+            menuBalance(balanceSum, yourUsername);
 
         }
         else
         {
-            cout << "Transfer cancelled, please try again!" << endl;
+            cout << "Bequeath cancelled, please try again!" << endl;
         }
     }
     else

@@ -4,11 +4,11 @@
 void reg()
 {
     string confirmPass, newPass;
-    int numLog;
+    char numLog;
 
     cout << endl << "**** Create New Account ****" << endl;
 
-    cout << endl << "Enter New UserName: ";
+    cout << endl << "Enter new username: ";
 
     ofstream out("names.txt", std::ios_base::app);
     if (out.is_open())
@@ -19,7 +19,7 @@ void reg()
         out.close();
     }
 
-    cout << endl << "Enter New password: ";
+    cout << endl << "Enter new password: ";
     // make it cin * instead of the password
     ofstream out1("passwords.txt", std::ios_base::app);
     if (out1.is_open())
@@ -51,8 +51,9 @@ void reg()
 
     // Add system("cls")
     cin >> numLog;
-    if (numLog == 1)
+    if (numLog == '1')
     {
+        system("cls");
         login();
     }
 }
@@ -84,14 +85,15 @@ void login()
 {
     string userName, Pass;
 
-    cout << endl << "Enter Your UserName: ";
+    cout << endl << "Enter your username: ";
     cin >> userName;
 
-    cout << endl << "Enter Your password: ";
+    cout << endl << "Enter your password: ";
     cin >> Pass;
 
     if (check(userName, Pass, "names.txt", "passwords.txt")) 
     {
+        system("cls");
         cout << "Hello " << userName << "," << endl << "This is your bank account!" << endl;
         account(userName);
     }
