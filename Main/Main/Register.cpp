@@ -147,41 +147,30 @@ void login()
 
 void mainMenu()
 {
-    int choice;
-    do
+    string answer;
+    string path = "../../textFiles/mainMenu.txt";
+    displayFunc(path);
+    cout << "If you have an account enter 'login' or if you want to create a new one enter 'create'!" << endl;
+    cout << "Enter answer: ";
+    cin >> answer;
+    if (answer == "create")
     {
-        cout << "1. Register\n";
-        cout << "2. Login\n";
-        cout << "3. Logout\n";
-        cout << "4. Exit\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
-
-        switch (choice)
-        {
-        case 1:
-            system("cls");
-            reg();
-            break;
-
-        case 2:
-            system("cls");
-            login();
-            break;
-
-        case 3:
-            system("cls");
-            cout << "Logout successful!\n";
-            break;
-
-        case 4:
-            //Add exit
-            cout << "Exiting...\n";
-            break;
-
-        default:
-            cout << "Invalid choice. Please try again.\n";
-        }
-    } while (choice != 4);
+        system("cls");
+        path = "../../textFiles/register.txt";
+        displayFunc(path);
+        reg();
+    }
+    else if (answer == "login")
+    {
+        system("cls");
+        path = "../../textFiles/login.txt";
+        displayFunc(path);
+        login();
+    }
+    else if (answer != "create" or answer != "login")
+    {
+        cout << "Invalid input";
+    }
+    //mainMenu();
 }
 

@@ -30,6 +30,7 @@ void send(string user, double balance, double transferSum)
 
 void asset(double balance)
 {
+
     cout << "Who do you want to bequeath money to?" << endl;
     cout << "Enter username: ";
     string uName;
@@ -52,27 +53,36 @@ void asset(double balance)
         cout << "What amount of money do you want to bequeath to " << uName << "?" << endl;
         cout << "Enter amount: ";
         double transferSum;
-        cin >> transferSum;
-        if (transferSum <= balance)
+        
+        if (cin >> transferSum)
         {
-            cout << "Bequeath was successful!" << endl;
-            balance -= transferSum;
-            cout << "If you want to see your balance after bequeath enter your username:" << endl;
-            string yourUsername;
-            cin >> yourUsername;
-            saveBalanceToFile(balance, yourUsername);
-            system("cls");
-            cout << "Your updated balance is: " << balance << endl;
-            double balanceSum = sum(uName);
-            send(uName, balanceSum, transferSum);
-            menuBalance(balanceSum, yourUsername);
-            system("cls");
-            mainMenu();
+            if (transferSum <= balance)
+            {
+                cout << "Bequeath was successful!" << endl;
+                balance -= transferSum;
+                cout << "If you want to see your balance after bequeath enter your username:" << endl;
+                string yourUsername;
+                cin >> yourUsername;
+                saveBalanceToFile(balance, yourUsername);
+                system("cls");
+                cout << "Your updated balance is: " << balance << endl;
+                double balanceSum = sum(uName);
+                send(uName, balanceSum, transferSum);
+                menuBalance(balanceSum, yourUsername);
+                system("cls");
+                mainMenu();
 
+            }
+            else
+            {
+                cout << "Bequeath cancelled, please try again!" << endl;
+
+            }
         }
         else
         {
-            cout << "Bequeath cancelled, please try again!" << endl;
+            cout << "Please enter number" << endl;
+            
         }
     }
     else
