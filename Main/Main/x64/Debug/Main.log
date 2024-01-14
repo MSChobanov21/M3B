@@ -1,5 +1,2 @@
-﻿  Page.cpp
-C:\Users\Admin\Desktop\M3B Will\M3B\Main\Main\Page.cpp(11,13): warning C4552: '!=': result of expression not used
-C:\Users\Admin\Desktop\M3B Will\M3B\Main\Main\Page.cpp(12,13): warning C4552: '!=': result of expression not used
-C:\Users\Admin\Desktop\M3B Will\M3B\Main\Main\Page.cpp(15,16): warning C4101: 'choose1': unreferenced local variable
+﻿  Register.cpp
   Main.vcxproj -> C:\Users\Admin\Desktop\M3B Will\M3B\Main\x64\Debug\Main.exe

@@ -26,19 +26,17 @@ void addMoney(double& balance)
 {
     double amount;
     cout << "Enter the amount to add: ";
-    cin >> amount;
-    if (amount)
-    {
-        balance += amount;
-
-        cout << "Money added successfully. New balance: " << balance << endl;
-        cout << "Before you make will save your money!" << endl;
-    }
-    else
+    
+    while(!(cin >> amount))
     {
         cout << "Please enter number!" << endl;
+        cin.clear();
+        cin.ignore(100, '\n');
     }
-        
+    balance += amount;
+    cout << "Money added successfully. New balance: " << balance << endl;
+    cout << "Before you make will save your money!" << endl;
+    
     
 }
 
@@ -58,8 +56,6 @@ void saveBalanceToFile(double balance, string user)
 
 void menuBalance(double balance, string userName)
 {
-    //path = "../../textFiles/acc.txt";
-    //displayFunc(path);
     char choice;
     do {
         cout << "1. Add money" << endl;
@@ -75,6 +71,7 @@ void menuBalance(double balance, string userName)
             addMoney(balance);
             break;
         case '2':
+            system("cls");
             saveBalanceToFile(balance, userName);
             break;
         case '3':

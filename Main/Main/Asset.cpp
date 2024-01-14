@@ -31,6 +31,7 @@ void send(string user, double balance, double transferSum)
 void seeYourBalance(double balance, string user, string uName, double transferSum)
 {
     cout << "To see your balance after bequeath enter your username:" << endl;
+    cout << "Enter you username:";
     string yourUsername;
     cin >> yourUsername;
     if (user == yourUsername)
@@ -78,26 +79,24 @@ void asset(double balance, string user)
         cout << "Enter amount: ";
         double transferSum;
         
-        if (cin >> transferSum)
+        while (!(cin >> transferSum))
         {
-            if (transferSum <= balance)
-            {
-                cout << "Bequeath was successful!" << endl;
-                balance -= transferSum;
-                seeYourBalance(balance, user, uName, transferSum);
-                    
+            cout << "Please enter number!" << endl;
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+        if (transferSum <= balance)
+        {
+            cout << "Bequeath was successful!" << endl;
+            balance -= transferSum;
+            seeYourBalance(balance, user, uName, transferSum);
+                
 
-            }
-            else
-            {
-                cout << "Bequeath cancelled, please try again!" << endl;
-
-            }
         }
         else
         {
-            cout << "Please enter number" << endl;
-            
+            cout << "Bequeath cancelled, please try again!" << endl;
+
         }
     }
     else

@@ -85,12 +85,20 @@ void reg()
         }
     }
     
-    cin >> numLog;
-    if (numLog == '1')
+    
+    do
     {
-        system("cls");
-        login();
-    }
+        cin >> numLog;
+        switch (numLog)
+        {
+        case '1':
+            system("cls");
+            login();
+            break;
+        default:
+            cout << "Wrong input. Try again:";
+        }
+    } while (numLog != '1');
 }
 
 bool check(string username, string password, string userFile, string passFile)
