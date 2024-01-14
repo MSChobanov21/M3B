@@ -1,6 +1,7 @@
 #include "Page.h"
 #include "Asset.h"
-
+#include "Liability.h"
+#include "Register.h"
 void exc(int num)
 {
     try
@@ -105,13 +106,52 @@ void menu(double currentBalance)
     }
     else if (choose == 2)
     {
+        srand(static_cast<unsigned int>(time(0)));
+        int liab = rand() % 9 + 1;
+        string house1, house2, house3, house4, house5, house6, house7, house8, house9;
+        properties(house1, house2, house3, house4, house5, house6, house7, house8, house9);
+        cout << "Those are your liabilities: " << endl;
+        yourProperties(liab, house1, house2, house3, house4, house5, house6, house7, house8, house9);
+        
+            cout << "Who do you want to bequeath a property to?" << endl;
+            cout << "Enter username: ";
+            string uName;
+            cin >> uName;
 
+            ifstream file("names.txt");
+            bool found = false;
+            string line;
+            while (getline(file, line))
+            {
+                if (line.find(uName) != string::npos)
+                {
+                    found = true;
+                }
+            }
+            file.close();
+
+            if (found)
+            {
+                cout << "Which property do you want to bequeath to " << uName << "?" << endl;
+                cout << "Enter Apartment or House: " << endl;
+                string house, city;
+                cin >> house;
+                cout << "Enter city, country";
+                getline(cin, city);
+                cout << "Bequeath was successful!" << endl;
+                system("cls");
+                mainMenu();
+
+            }
+            else
+            {
+                cout << "Bequeath cancelled, please try again!" << endl;
+
+            }
+        }
     }
-    else
-    {
-        exc(choose);
-    }
-}
+
+
 
 
 void account(string user)

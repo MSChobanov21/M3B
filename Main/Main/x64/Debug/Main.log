@@ -1,3 +1,5 @@
-﻿  Asset.cpp
-C:\Users\Admin\Desktop\M3B Will\M3B\Main\Main\Asset.cpp(15): warning C4715: 'sum': not all control paths return a value
-  Main.vcxproj -> C:\Users\Admin\Desktop\M3B Will\M3B\Main\x64\Debug\Main.exe
+﻿  Page.cpp
+C:\Users\User\source\repos\M3B\Main\Main\Page.cpp(9,13): warning C4552: '!=': result of expression not used
+C:\Users\User\source\repos\M3B\Main\Main\Page.cpp(10,13): warning C4552: '!=': result of expression not used
+C:\Users\User\source\repos\M3B\Main\Main\Page.cpp(13,16): warning C4101: 'choose1': unreferenced local variable
+  Main.vcxproj -> C:\Users\User\source\repos\M3B\Main\x64\Debug\Main.exe
