@@ -40,8 +40,8 @@ to other accounts that have an account in our bank.
 ## 👨🏻‍💻 Team Members
 | **Name** | **Role** | **Grade** |
 | :---:   | :---: | :---: |
-| Miroslav Ivanov| Back-end developer | 🟨 10A |
+| Miroslav Ivanov| Front-end developer | 🟨 10A |
 | Bilyana Badalova | Scrum Trainer  | 🟥 10B |
 | Miroslav Chobanov | Back-end developer  | 🟩 10V |
-| Mariela Dimova |  Front-end developer  | 🟦 10G |
+| Mariela Dimova |  Back-end developer  | 🟦 10G |
 
