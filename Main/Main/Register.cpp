@@ -129,6 +129,10 @@ void login()
     if (check(userName, Pass, "names.txt", "passwords.txt")) 
     {
         system("cls");
+
+        path = "../../textFiles/acc.txt";
+        displayFunc(path);
+
         cout << "Hello " << userName << "," << endl << "This is your bank account!" << endl;
         account(userName);
     }
