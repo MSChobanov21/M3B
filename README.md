@@ -6,9 +6,8 @@
 <br>
 <p align = "center">
     <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/MSCHobanov21/M3B?style=flat-square">
-    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/MSCHobanov21/M3B?style=flat-square">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MSCHobanov21/M3B?style=flat-square">
-    <img src="https://img.shields.io/github/languages/count/MSCHobanov21/M3B?style=flat-square">
+    
 </p>
 
 ## 📋 Description
