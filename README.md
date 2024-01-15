@@ -37,7 +37,7 @@ to other accounts that have an account in our bank.
   
 ## 💼 Documents
 - [Presentation](https://codingburgas-my.sharepoint.com/:p:/r/personal/bsbadalova21_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7BEEAF0698-78BE-4844-8E56-7EC9A15E89E0%7D&file=%D0%9C3%D0%92.pptx&action=edit&mobileredirect=true&DefaultItemOpen=1)
-- [Documentation](https://codingburgas-my.sharepoint.com/:w:/r/personal/bsbadalova21_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7BA23BF6E6-BC85-47FD-8A5F-FD688B3B75E5%7D&file=M3B_Documentation%20.docx&action=default&mobileredirect=true&DefaultItemOpen=1&web=1)
+- [Documentation](https://codingburgas-my.sharepoint.com/:w:/r/personal/bsbadalova21_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7B80643B05-6EB4-4141-A120-4736547C34E6%7D&file=M3B_Documentation.docx&action=default&mobileredirect=true)
   
 ## 👨🏻‍💻 Team Members
 | **Name** | **Role** | **Grade** |
