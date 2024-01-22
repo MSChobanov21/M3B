@@ -1,2 +1,10 @@
-﻿  Register.cpp
+﻿  Asset.cpp
+  Main.cpp
+  Page.cpp
+C:\Users\Admin\Desktop\M3B Will\M3B\Main\Main\Page.cpp(10,13): warning C4552: '!=': result of expression not used
+C:\Users\Admin\Desktop\M3B Will\M3B\Main\Main\Page.cpp(11,13): warning C4552: '!=': result of expression not used
+C:\Users\Admin\Desktop\M3B Will\M3B\Main\Main\Page.cpp(14,16): warning C4101: 'choose1': unreferenced local variable
+  Register.cpp
+  Generating Code...
+C:\Users\Admin\Desktop\M3B Will\M3B\Main\Main\Asset.cpp(15): warning C4715: 'sum': not all control paths return a value
   Main.vcxproj -> C:\Users\Admin\Desktop\M3B Will\M3B\Main\x64\Debug\Main.exe

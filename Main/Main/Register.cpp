@@ -207,12 +207,17 @@ void login()
 {
 
     string userName, Pass;
+    char ch;
 
     cout << endl << "Enter your username: ";
     cin >> userName;
 
     cout << endl << "Enter your password: ";
-    cin >> Pass;
+    while ((ch = _getch()) != '\r')
+    {
+        cout << '*';
+        Pass += ch;
+    }
 
     if (check(userName, Pass, "names.txt", "passwords.txt")) 
     {
