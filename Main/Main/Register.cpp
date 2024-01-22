@@ -9,25 +9,130 @@ string path;
 bool userExists(string username)
 {
     ifstream file("names.txt");
-    string line;
-    getline(file, line);
-    
-        if (line.find(username) != string::npos)
+    if (file.is_open())
+    {
+        string line;
+        while (getline(file, line))
         {
-            file.close();
-            return true;
+            if (line == username)
+            {
+                file.close();
+                return true;
+            }
         }
-    
-
-    file.close();
+        file.close();
+    }
     return false;
 }
 
+bool checkPass(string Pass)
+{
+    if (Pass.length() < 8) 
+    {
+        cout << "Password should be at least 8 characters long." << endl;
+        return false;
+    }
+
+    bool Upper = false;
+    for (char ch : Pass) 
+    {
+        if (isupper(ch)) 
+        {
+            Upper = true;
+        }
+    }
+    if (!Upper) 
+    {
+        cout << "Password should contain at least one uppercase letter." << endl;
+        return false;
+    }
+
+    bool Lower = false;
+    for (char ch : Pass) 
+    {
+        if (islower(ch)) 
+        {
+            Lower = true;
+        }
+    }
+    if (!Lower) 
+    {
+        cout << "Password should contain at least one lowercase letter." << endl;
+        return false;
+    }
+
+    bool Digit = false;
+    for (char ch : Pass) 
+    {
+        if (isdigit(ch)) 
+        {
+            Digit = true;
+        }
+    }
+    if (!Digit) 
+    {
+        cout << "Password should contain at least one digit." << endl;
+        return false;
+    }
+
+    bool specialChar = false;
+    for (char ch : Pass) 
+    {
+        if (!isalnum(ch)) 
+        {
+            specialChar = true;
+        }
+    }
+    if (!specialChar) 
+    {
+        cout << "Password should contain at least one special character." << endl;
+        return false;
+    }
+
+    return true;
+}
+
+
+void enterPass(string newPass, string confirmPass)
+{
+    string Pass;
+    cout << endl << "Enter new password: ";
+    cin >> Pass;
+    if (checkPass(Pass))
+    {
+        ofstream out1("passwords.txt", std::ios_base::app);
+        if (out1.is_open())
+        {
+            out1 << Pass << endl;
+            out1.close();
+            newPass = Pass;
+
+        }
+        cout << endl << "Confirm the password: ";
+        cin >> confirmPass;
+
+        if (confirmPass == newPass)
+        {
+            cout << "\n===================================\n";
+            cout << "\nSuccessfully new account created! \n \n";
+            cout << "===================================\n";
+            cout << endl;
+            cout << "If you want to login in your account enter '1':" << endl;
+        }
+        else
+        {
+            cout << endl << "Password confirmation not correct!" << endl;
+
+        }
+    }
+    else
+    {
+        enterPass(newPass, confirmPass);
+    }
+}
 
 void reg()
 {
-    
-
     string confirmPass, newPass, newName;
     char numLog;
 
@@ -52,35 +157,8 @@ void reg()
     }
     else
     {
-        cout << endl << "Enter new password: ";
-        ofstream out1("passwords.txt", std::ios_base::app);
-        if (out1.is_open())
-        {
-            string Pass;
-            cin >> Pass;
+        enterPass(newPass, confirmPass);
 
-
-            out1 << Pass << endl;
-            out1.close();
-            newPass = Pass;
-        }
-
-        cout << endl << "Confirm the password: ";
-        cin >> confirmPass;
-
-        if (confirmPass == newPass)
-        {
-            cout << "\n===================================\n";
-            cout << "\nSuccessfully new account created! \n \n";
-            cout << "===================================\n";
-            cout << endl;
-            cout << "If you want to login in your account enter '1':" << endl;
-        }
-        else
-        {
-            cout << endl << "Password confirmation not correct!" << endl;
-
-        }
     }
     
     
