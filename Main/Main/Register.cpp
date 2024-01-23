@@ -9,19 +9,15 @@ string path;
 bool userExists(string username)
 {
     ifstream file("names.txt");
-    if (file.is_open())
+    string line;
+    getline(file, line);
+
+    if (line.find(username) != string::npos)
     {
-        string line;
-        while (getline(file, line))
-        {
-            if (line == username)
-            {
-                file.close();
-                return true;
-            }
-        }
         file.close();
+        return true;
     }
+    file.close();
     return false;
 }
 
@@ -157,6 +153,13 @@ void reg()
     }
     else
     {
+
+        cout << endl << "Password requirements:" << endl;
+        cout << "The password should be at least 8 characters long," << endl;
+        cout << "The password should contain at least one uppercase letter," << endl;
+        cout << "The password should contain at least one lowercase letter," << endl;
+        cout << "The password should contain at least one digit," << endl;
+        cout << "The password should contain at least one special character!" << endl;
         enterPass(newPass, confirmPass);
 
     }
