@@ -7,6 +7,7 @@
 
 using namespace std;
 
+void gateway();
 bool userExists(string username);
 bool checkPass(string Pass);
 void enterPass(string newPass, string confirmPass);

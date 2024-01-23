@@ -21,9 +21,13 @@ void exc(int num)
 // Function to add money to the account
 void addMoney(double& balance) 
 {
+    gateway();
+
     double amount;
     cout << "Enter the amount to add: ";
+
     
+
     while(!(cin >> amount))
     {
         cout << "Please enter number!" << endl;

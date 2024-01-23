@@ -5,6 +5,10 @@
 
 
 string path;
+void gateway()
+{
+    displayFunc("../../textFiles/balance.txt");
+}
 
 bool userExists(string username)
 {
@@ -132,6 +136,7 @@ void reg()
     string confirmPass, newPass, newName;
     char numLog;
 
+    
     cout << endl << "**** Create New Account ****" << endl;
 
     cout << endl << "Enter new username: ";
@@ -227,6 +232,8 @@ void login()
         system("cls");
 
         path = "../../textFiles/acc.txt";
+        displayFunc(path);
+        path = "../../textFiles/styling.txt";
         displayFunc(path);
 
         cout << "Hello " << userName << "," << endl << "This is your bank account!" << endl;
