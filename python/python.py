@@ -23,12 +23,11 @@ def see_your_balance(balance, user, u_name, transfer_sum):
 
     if user == your_username:
         save_balance_to_file(balance, your_username)
-        # Assuming save_balance_to_file is a function you've defined separately
-        # Also assuming sum and send functions are defined elsewhere
+       
         print(f"Your updated balance is: {balance}")
         balance_sum = sum(u_name)
         send(u_name, balance_sum, transfer_sum)
-        # Assuming menu_balance, system_clear, and main_menu functions are defined elsewhere
+        
         menu_balance(balance_sum, your_username)
         system_clear()
         main_menu()
@@ -90,7 +89,7 @@ def exc(num):
 
 
 
-#7 Function to add money to the account
+#7 
 def addMoney(balance):
     amount = float(input("Enter the amount to add: "))
     balance += amount
@@ -125,7 +124,7 @@ def menu_balance(balance, user_name):
 
 
 
-#9 Function to save balance to a text file
+#9 
 def save_balance_to_file(balance, user):
     with open(f"{user}.txt", 'w') as file:
         file.write(str(balance))
@@ -136,7 +135,7 @@ def save_balance_to_file(balance, user):
 def balance_func(user_name):
     balance = 0.0
 
-    # Load previous balance from file (if available)
+    
     try:
         with open(f"{user_name}.txt", 'r') as file:
             balance = float(file.read())
@@ -165,20 +164,8 @@ def userExists(username):
 
 
 
+
 #12
-
-def check(username, password, userFile, passFile):
-    with open(userFile, 'r') as file, open(passFile, 'r') as file1:
-        storedUsername = ''
-        storedPassword = ''
-        for line1, line2 in zip(file, file1):
-            storedUsername = line1.strip()
-            storedPassword = line2.strip()
-            if storedUsername == username:
-                return storedPassword == password
-    return False
-
-#13
 def login():
     user_name = input("\nEnter your username: ")
     password = input("\nEnter your password: ")
@@ -196,7 +183,7 @@ def login():
         print("\nInvalid username or password. Try again!")
         login()
 
-#14
+#13
 
 def main_menu():
     path = "../../textFiles/mainMenu.txt"
@@ -223,7 +210,7 @@ def main_menu():
 
 
 
-#15 front-end function
+#14
 
 def displayFunc(path):
     with open(path, 'r') as newfile:
@@ -233,49 +220,7 @@ def displayFunc(path):
 
 
 
-#16
-import getpass
 
-def reg():
-    print("\n**** Create New Account ****")
-
-    new_name = input("\nEnter new username: ")
-
-    with open("names.txt", 'a') as out:
-        out.write(new_name + '\n')
-
-    if user_exists(new_name):
-        clear_screen()
-        print("Username already exists. Try a different one.")
-        reg()
-    else:
-        print("\nEnter new password: ", end='')
-        new_pass = getpass.getpass()
-
-        with open("passwords.txt", 'a') as out1:
-            out1.write(new_pass + '\n')
-
-        confirm_pass = getpass.getpass("\nConfirm the password: ")
-
-        if confirm_pass == new_pass:
-            print("\n===================================")
-            print("\nSuccessfully created a new account!\n")
-            print("===================================")
-            print("\nIf you want to log in to your account, enter '1':")
-
-        else:
-            print("\nPassword confirmation not correct!")
-
-    while True:
-        num_log = input()
-        if num_log == '1':
-            clear_screen()
-            path = "../../textFiles/login.txt"
-            display_func(path)
-            login()
-            break
-        else:
-            print("Wrong input. Try again:")
 
 
 
