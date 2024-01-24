@@ -25,7 +25,7 @@ bool userExists(string username)
     return false;
 }
 
-bool checkPass(string Pass)
+bool checkPass(string Pass) //pasword requierments
 {
     if (Pass.length() < 8) 
     {
@@ -92,7 +92,7 @@ bool checkPass(string Pass)
     return true;
 }
 
-
+//enter your password
 void enterPass(string newPass, string confirmPass)
 {
     string Pass;
@@ -186,7 +186,7 @@ void reg()
         }
     } while (numLog != '1');
 }
-
+//check if the username and password exist
 bool check(string username, string password, string userFile, string passFile)
 {
     ifstream file(userFile);
@@ -248,7 +248,7 @@ void login()
 
 }
 
-
+//choose from 2 options
 void mainMenu()
 {
     string answer;

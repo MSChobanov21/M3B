@@ -2,7 +2,7 @@
 #include "Page.h"
 #include "Register.h"
 
-double sum(string userName)
+double sum(string userName) //enter balance
 {
     double balance = 0.0;
     ifstream file(userName + ".txt");
@@ -14,7 +14,7 @@ double sum(string userName)
     }
 }
 
-void send(string user, double balance, double transferSum)
+void send(string user, double balance, double transferSum) 
 {
     ofstream file(user + ".txt");
 
@@ -28,7 +28,7 @@ void send(string user, double balance, double transferSum)
 }
 
 
-void seeYourBalance(double balance, string user, string uName, double transferSum)
+void seeYourBalance(double balance, string user, string uName, double transferSum) // go back to menu
 {
     cout << "To see your balance after bequeath enter your username:" << endl;
     cout << "Enter you username:";
@@ -47,6 +47,7 @@ void seeYourBalance(double balance, string user, string uName, double transferSu
     }
     else
     {
+        //check for username
         cout << "Invalid Username" << endl;
         seeYourBalance(balance, user, uName, transferSum);
     }
@@ -55,7 +56,7 @@ void seeYourBalance(double balance, string user, string uName, double transferSu
 
 void asset(double balance, string user)
 {
-
+    //send an amount of money
     cout << "Who do you want to bequeath money to?" << endl;
     cout << "Enter username: ";
     string uName;

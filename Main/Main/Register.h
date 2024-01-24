@@ -6,7 +6,7 @@
 #include <conio.h>
 
 using namespace std;
-
+//add functions for password
 void gateway();
 bool userExists(string username);
 bool checkPass(string Pass);
