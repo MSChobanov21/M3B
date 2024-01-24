@@ -48,8 +48,12 @@ void saveBalanceToFile(double balance, string user)
 
     if (file.is_open()) 
     {
+
         file << balance;
         file.close();
+
+        gateway();
+
         cout << "Balance saved to file." << endl;
     }
 }
